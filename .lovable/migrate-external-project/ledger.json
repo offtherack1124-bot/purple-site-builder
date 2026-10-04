@@ -2,16 +2,82 @@
   "source": "https://github.com/Purplelotusec/Purple3",
   "reference": "https://www.hacktron.ai/",
   "capabilities": [
-    {"capability":"Static marketing site and sections","source":"index.html","outcome":"migrate","status":"in_progress","next_action":"Rebuild with reference-inspired visual language and PurpleLotus content"},
-    {"capability":"Threat advisory feed","source":"data/attacks.json, threat-feed.html, fetch_attacks.py","outcome":"migrate","status":"in_progress","next_action":"Display repository advisory snapshot and link upstream advisories"},
-    {"capability":"Incident digest","source":"data/incident_digest.json","outcome":"migrate","status":"in_progress","next_action":"Show source status accurately without inventing missing reports"},
-    {"capability":"Articles","source":"blog/*.html and data/blogs.json","outcome":"migrate","status":"in_progress","next_action":"Recreate both published articles"},
-    {"capability":"Contact and product links","source":"index.html","outcome":"migrate","status":"in_progress","next_action":"Keep mailto, GitHub, Osprey and installation links"},
-    {"capability":"Newsletter signup","source":"index.html","outcome":"migrate","status":"pending","next_action":"Source newsletter control has no submission endpoint; offer email-based signup instead"},
-    {"capability":"Database and auth identities","source":"repository inspection","outcome":"not_applicable","status":"verified","next_action":"None; static site has neither"},
-    {"capability":"Uploaded file bytes","source":"PurpleBanner.jpg","outcome":"not_used","status":"verified","next_action":"Reference-inspired bespoke hero art replaces black wordmark banner"},
-    {"capability":"External providers, callbacks, webhooks and secrets","source":"repository inspection","outcome":"not_applicable","status":"verified","next_action":"None found"},
-    {"capability":"Scheduled advisory refresh","source":".github workflows and fetch_attacks.py","outcome":"retain_source","status":"pending","next_action":"Repository automation remains external; imported snapshot reflects last repository update"},
-    {"capability":"Cutover and verification","source":"published static site","outcome":"migrate","status":"pending","next_action":"Verify routes and visuals; publishing remains user-controlled"}
+    {
+      "capability": "Static marketing site and sections",
+      "source": "index.html",
+      "outcome": "migrate",
+      "status": "verified",
+      "next_action": "None"
+    },
+    {
+      "capability": "Threat advisory feed",
+      "source": "data/attacks.json, threat-feed.html, fetch_attacks.py",
+      "outcome": "migrate",
+      "status": "verified",
+      "next_action": "None"
+    },
+    {
+      "capability": "Incident digest",
+      "source": "data/incident_digest.json",
+      "outcome": "migrate",
+      "status": "verified",
+      "next_action": "None"
+    },
+    {
+      "capability": "Articles",
+      "source": "blog/*.html and data/blogs.json",
+      "outcome": "migrate",
+      "status": "verified",
+      "next_action": "None"
+    },
+    {
+      "capability": "Contact and product links",
+      "source": "index.html",
+      "outcome": "migrate",
+      "status": "verified",
+      "next_action": "None"
+    },
+    {
+      "capability": "Newsletter signup",
+      "source": "index.html",
+      "outcome": "replace",
+      "status": "verified",
+      "next_action": "Source had no submission handler; email-based updates request is available"
+    },
+    {
+      "capability": "Database and auth identities",
+      "source": "repository inspection",
+      "outcome": "not_applicable",
+      "status": "verified",
+      "next_action": "None; static site has neither"
+    },
+    {
+      "capability": "Uploaded file bytes",
+      "source": "PurpleBanner.jpg",
+      "outcome": "not_used",
+      "status": "verified",
+      "next_action": "Reference-inspired bespoke hero art replaces black wordmark banner"
+    },
+    {
+      "capability": "External providers, callbacks, webhooks and secrets",
+      "source": "repository inspection",
+      "outcome": "not_applicable",
+      "status": "verified",
+      "next_action": "None found"
+    },
+    {
+      "capability": "Scheduled advisory refresh",
+      "source": ".github workflows and fetch_attacks.py",
+      "outcome": "retain_source",
+      "status": "pending",
+      "next_action": "Original GitHub Actions update the source repository daily; this independent site displays the imported snapshot and needs a future source sync for fresh advisories"
+    },
+    {
+      "capability": "Cutover and verification",
+      "source": "published static site",
+      "outcome": "migrate",
+      "status": "pending",
+      "next_action": "Site routes and browser interactions verified; publishing remains user-controlled"
+    }
   ]
 }
