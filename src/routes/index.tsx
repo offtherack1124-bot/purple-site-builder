@@ -1,8 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { useState } from "react";
+import { ArrowRight, ArrowUpRight, Copy, Check } from "lucide-react";
 import { ButtonLink } from "../components/Button";
 import { SiteLayout } from "../components/SiteLayout";
-import heroHands from "../assets/hero-hands.jpg";
+import heroVisual from "../assets/hero-osprey.jpg";
 import advisories from "../data/advisories.json";
 
 const articles = [
