@@ -1,0 +1,9 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowUpRight } from "lucide-react";
+import { SiteLayout } from "../components/SiteLayout";
+const posts = [
+  {slug:"introducing-osprey",tag:"PRODUCT LAUNCH",title:"Introducing Osprey: Security Visibility for the Software Supply Chain",excerpt:"Introducing PurpleLotus's open-source security CLI for SBOM generation, vulnerability intelligence and known exploited vulnerabilities."},
+  {slug:"eu-cybersecurity-rules",tag:"CYBERSECURITY",title:"Cyber Resilience Act (CRA): What Companies Need to Know",excerpt:"How the EU is changing cybersecurity requirements and why continuous vulnerability visibility matters."}
+];
+export const Route = createFileRoute("/blogs")({head:()=>({meta:[{title:"Research & Insights — PurpleLotus"},{name:"description",content:"Read PurpleLotus research on Osprey, open-source security, and the Cyber Resilience Act."},{property:"og:title",content:"Research & Insights — PurpleLotus"},{property:"og:description",content:"Notes from the PurpleLotus research desk on supply chain security and cyber resilience."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}),component:Blogs});
+function Blogs(){return <SiteLayout><div className="page-hero"><p className="section-kicker">RESEARCH / PURPLELOTUS</p><h1>Notes from the research desk.</h1><p>Perspectives on open-source security, emerging risks, and the tools we build to meet them.</p></div><div className="page-content"><div className="article-grid">{posts.map(p=><Link to="/blog/$slug" params={{slug:p.slug}} className="article-card" key={p.slug}><span className="card-kicker">{p.tag}</span><h3>{p.title}</h3><p>{p.excerpt}</p><div className="card-bottom"><span>SEP 19, 2026 · PURPLELOTUS</span><ArrowUpRight size={18}/></div></Link>)}</div></div></SiteLayout>}

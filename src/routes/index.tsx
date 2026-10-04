@@ -1,24 +1,46 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ButtonLink } from "../components/Button";
+import { SiteLayout } from "../components/SiteLayout";
+import heroHands from "../assets/hero-hands.jpg";
+import advisories from "../data/advisories.json";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+const articles = [
+  { slug: "introducing-osprey", tag: "PRODUCT LAUNCH", title: "Introducing Osprey: Security Visibility for the Software Supply Chain", excerpt: "Meet our open-source CLI for SBOM generation, vulnerability intelligence and known exploited vulnerabilities.", date: "SEP 19, 2026" },
+  { slug: "eu-cybersecurity-rules", tag: "CYBERSECURITY", title: "Cyber Resilience Act: What Companies Need to Know", excerpt: "How the EU is changing cybersecurity requirements and why continuous vulnerability visibility matters.", date: "SEP 19, 2026" }
+];
+const faqs = [
+  ["What types of pentesting does PurpleLotus offer?", "We offer web, mobile, cloud, network, and CI/CD penetration testing tailored to modern threat landscapes, with a focus on supply chain security."],
+  ["How are PurpleLotus pentests different?", "We go beyond checklists to investigate real-world exploitation paths, misconfigurations, and chained business logic flaws that automated tools can miss."],
+  ["Do you provide a detailed vulnerability report?", "Yes. Engagements include a prioritized, developer-friendly report with reproduction steps, severity scoring, and actionable remediation guidance."],
+  ["What is Osprey?", "Osprey is an open-source CLI that builds a software bill of materials and adds context from CISA's Known Exploited Vulnerabilities catalog and OSV version intelligence."],
+  ["Where does the threat feed come from?", "The advisory snapshot is sourced from the public GitHub Advisory Database. Always confirm affected and patched versions against the linked upstream advisory."]
+];
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({ meta: [
+    { title: "PurpleLotus — Supply Chain Security" },
+    { name: "description", content: "PurpleLotus helps teams protect their software supply chain with Osprey, threat intelligence and expert penetration testing." },
+    { property: "og:title", content: "PurpleLotus — Supply Chain Security" },
+    { property: "og:description", content: "Protect what you depend on. Open-source supply chain visibility and expert security testing from PurpleLotus." },
+    { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }
+  ] }),
+  component: Home,
 });
-
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
+function Home() {
+  return <SiteLayout>
+    <section className="hero">
+      <img className="hero-image" src={heroHands} width="1920" height="1100" alt="Two hands composed of tiny code characters reaching toward each other" />
+      <div className="hero-content"><p className="eyebrow">[ PURPLELOTUS / SUPPLY CHAIN SECURITY ]</p><h1>Security for what<br/>you depend on.</h1><p className="hero-desc">Find the risks hiding in your dependencies, pipelines, and products. PurpleLotus brings open-source intelligence and human expertise into focus.</p><div className="hero-cta"><ButtonLink href="https://github.com/Purplelotusec/Osprey" target="_blank" rel="noreferrer">EXPLORE OSPREY <ArrowUpRight size={15}/></ButtonLink><ButtonLink href="mailto:security@purplelotus.tech" variant="outline">TALK TO OUR TEAM <ArrowUpRight size={15}/></ButtonLink></div></div>
+      <div className="hero-corner left">SYSTEM: PURPLELOTUS<br/>FOCUS: SUPPLY CHAIN</div><div className="hero-corner right">INTELLIGENCE: ACTIVE<br/><span className="live-dot"/>STATUS: MONITORING</div>
+    </section>
+    <div className="proof-strip"><div className="proof-item"><b>OPEN SOURCE FIRST</b><span>Tools built for the ecosystem we all depend on.</span></div><div className="proof-item"><b>KNOWN EXPLOITATION</b><span>Prioritize vulnerabilities with real-world context.</span></div><div className="proof-item"><b>EXPERT-LED TESTING</b><span>Go beyond the findings automated scanners surface.</span></div><div className="proof-item"><b>DEVELOPER WORKFLOWS</b><span>Security signals where teams already work.</span></div></div>
+    <section className="section" id="product"><div className="section-inner product-grid"><div className="product-copy"><p className="section-kicker">01 / OUR OPEN-SOURCE TOOL</p><h2 className="section-title">Know what you ship. Know what's exploited.</h2><p>Meet Osprey, the open-source security CLI from PurpleLotus. Generate a software bill of materials, correlate components with CISA's Known Exploited Vulnerabilities catalog, and use OSV version evidence to separate signal from noise.</p><div className="tag-row"><span className="tag">SBOM GENERATION</span><span className="tag">CISA KEV</span><span className="tag">OSV INTELLIGENCE</span><span className="tag">CI-READY</span></div><div className="product-links"><ButtonLink href="https://github.com/Purplelotusec/Osprey" target="_blank" rel="noreferrer">VIEW ON GITHUB <ArrowUpRight size={14}/></ButtonLink><ButtonLink href="https://osprey.purplelotus.space" target="_blank" rel="noreferrer" variant="outline">LEARN MORE <ArrowUpRight size={14}/></ButtonLink></div></div><div className="terminal" aria-label="Illustrative Osprey command line"><div className="terminal-top"><span>OSPREY / SUPPLY CHAIN SCAN</span><span className="terminal-dots"><i/><i/><i/></span></div><div className="terminal-body"><p><span className="prompt">$</span> cra --path ./your-project</p><p className="dim">──────────────────────────────</p><p>→ Building software bill of materials</p><p>→ Checking CISA KEV catalog</p><p>→ Resolving OSV version evidence</p><div className="rule"/><p className="success">✓ Analysis complete</p><p>Signals: known exploited / version-aware</p><p className="dim">Review the evidence before taking action.</p></div><div className="terminal-footer">[ OPEN SOURCE ] &nbsp; [ BUILT FOR DEVELOPERS ]</div></div></div></section>
+    <section className="section"><div className="section-inner"><div className="section-headline"><div><p className="section-kicker">02 / HOW WE WORK</p><h2 className="section-title">See the whole attack path.</h2><p className="section-intro">From a vulnerable component to a compromised pipeline, meaningful security takes context — not just another alert.</p></div></div><div className="feature-grid"><div className="feature"><span className="feature-number">01 / VISIBILITY</span><h3>Understand your dependencies.</h3><p>Build an SBOM to see the components behind your software and where exposure begins.</p></div><div className="feature"><span className="feature-number">02 / PRIORITY</span><h3>Know what matters now.</h3><p>Cross-check against known exploitation and version evidence, so teams can focus on actionable risks.</p></div><div className="feature"><span className="feature-number">03 / RESPONSE</span><h3>Move with confidence.</h3><p>Bring clear security signals into developer workflows and investigate with evidence in hand.</p></div></div></div></section>
+    <section className="section dark-band"><div className="section-inner"><div className="section-headline"><div><p className="section-kicker">03 / THREAT INTELLIGENCE</p><h2 className="section-title">The latest from the ecosystem.</h2><p className="section-intro">Recent advisories from the GitHub Advisory Database, captured in the Purple3 repository.</p></div><Link className="text-link" to="/threat-feed">EXPLORE THE FEED <ArrowUpRight size={13}/></Link></div><div className="feed-list">{advisories.advisories.slice(0, 4).map(a => <a href={a.source_url} target="_blank" rel="noreferrer" className="feed-row" key={a.ghsa_id}><span className="package">{a.name}</span><span className="eco">{a.ecosystem}</span><span className="date">{a.published.slice(0,10)}</span><span className="severity">{a.severity}</span><ArrowUpRight size={16}/></a>)}</div><p className="feed-note">SNAPSHOT: {advisories.generated_at.slice(0,10)} · ALWAYS VERIFY DETAILS WITH THE LINKED UPSTREAM ADVISORY.</p></div></section>
+    <section className="section" id="services"><div className="section-inner"><div className="section-headline"><div><p className="section-kicker">04 / SECURITY SERVICES</p><h2 className="section-title">Expert eyes on the hard problems.</h2><p className="section-intro">Manual penetration testing that looks past checklists to find the paths attackers actually take.</p></div><ButtonLink href="mailto:security@purplelotus.tech" variant="outline">GET IN TOUCH <ArrowUpRight size={14}/></ButtonLink></div><div className="services-grid"><div className="service"><span className="service-num">01 — NETWORK</span><h3>Network penetration testing</h3><p>Uncover network vulnerabilities and chained, multi-step paths that automated checks can miss.</p></div><div className="service"><span className="service-num">02 — APPLICATION</span><h3>Application penetration testing</h3><p>Investigate web and mobile apps for logic bypasses, authentication weaknesses, and injection flaws.</p></div><div className="service"><span className="service-num">03 — HUMAN</span><h3>Social engineering testing</h3><p>Assess susceptibility to phishing and social attacks through realistic simulation campaigns.</p></div></div></div></section>
+    <section className="section"><div className="section-inner"><div className="section-headline"><div><p className="section-kicker">05 / THE RESEARCH DESK</p><h2 className="section-title">Ideas from the field.</h2></div><Link className="text-link" to="/blogs">ALL RESEARCH <ArrowUpRight size={13}/></Link></div><div className="article-grid">{articles.map(a=><Link className="article-card" to="/blog/$slug" params={{slug:a.slug}} key={a.slug}><span className="card-kicker">{a.tag}</span><h3>{a.title}</h3><p>{a.excerpt}</p><div className="card-bottom"><span>{a.date}</span><ArrowUpRight size={17}/></div></Link>)}</div></div></section>
+    <section className="section" id="pricing"><div className="section-inner"><div className="section-headline"><div><p className="section-kicker">06 / GET STARTED</p><h2 className="section-title">Security for every stage.</h2></div></div><div className="pricing-grid"><div className="price-card"><span className="tier">OPEN SOURCE / FREE</span><h3>$0</h3><p className="price-description">Forever · no credit card required</p><ul><li>Basic CI/CD pipeline scanning</li><li>Up to 3 GitHub repositories</li><li>Community support</li><li>Weekly security summary</li><li>Limited vulnerability detection</li></ul><ButtonLink href="mailto:security@purplelotus.tech?subject=Getting%20started%20with%20PurpleLotus" variant="outline">GET STARTED <ArrowRight size={14}/></ButtonLink></div><div className="price-card featured"><span className="tier">PURPLE PLUS / CUSTOM</span><h3>Let's talk.</h3><p className="price-description">Contact us for pricing</p><ul><li>Full-scope web application pentesting</li><li>Unlimited private and public repo scanning</li><li>GitHub PR bot for fix suggestions</li><li>Advanced misconfiguration detection</li><li>Custom detection rules and priority support</li></ul><ButtonLink href="mailto:security@purplelotus.tech?subject=Purple%20Plus%20inquiry" variant="light">CONTACT US <ArrowUpRight size={14}/></ButtonLink></div></div></div></section>
+    <section className="section" id="faq"><div className="section-inner"><div className="section-headline"><div><p className="section-kicker">07 / COMMON QUESTIONS</p><h2 className="section-title">Good questions. Clear answers.</h2></div></div><div className="faq-list">{faqs.map(([q,a])=><details className="faq-item" key={q}><summary>{q}</summary><p>{a}</p></details>)}</div></div></section>
+    <section className="section closing"><div className="section-inner"><p className="eyebrow">[ THE NEXT MOVE IS YOURS ]</p><h2 className="section-title">Secure what comes next.</h2><ButtonLink href="mailto:security@purplelotus.tech" variant="dark">START A CONVERSATION <ArrowUpRight size={14}/></ButtonLink></div></section>
+  </SiteLayout>;
 }
