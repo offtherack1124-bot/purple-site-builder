@@ -11,3 +11,4 @@
 
 - Keep PurpleLotus marketing pages as TanStack routes with shared presentation and imported static Purple3 editorial/advisory data; this preserves source content without introducing an unnecessary backend.
 - Label advisory data with its source snapshot date and link upstream records; the repository's GitHub Actions do not refresh this separate app automatically.
+- Store user-provided site artwork as CDN asset pointers imported by routes; this keeps uploaded binaries out of the source repository.
