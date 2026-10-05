@@ -15,8 +15,8 @@ export function SiteLayout({ children }: { children: React.ReactNode }) {
       <div className="header-inner">
         <Link to="/" className="brand" aria-label="PurpleLotus home"><span>PURPLELOTUS</span></Link>
         <nav className={menuOpen ? "main-nav open" : "main-nav"} aria-label="Main navigation">
-          <div className="products-nav" onMouseEnter={() => setProductsOpen(true)} onMouseLeave={() => setProductsOpen(false)}>
-            <Button variant="outline" className="products-trigger" aria-expanded={productsOpen} aria-haspopup="true" onClick={() => setProductsOpen(value => window.matchMedia("(max-width: 760px)").matches ? !value : true)}>PRODUCTS <ChevronDown size={11} aria-hidden="true"/></Button>
+           <div className="products-nav" onMouseEnter={() => { if (window.matchMedia("(min-width: 761px)").matches) setProductsOpen(true); }} onMouseLeave={() => { if (window.matchMedia("(min-width: 761px)").matches) setProductsOpen(false); }}>
+             <Button variant="outline" className="products-trigger" aria-expanded={productsOpen} aria-haspopup="true" onClick={() => setProductsOpen(value => window.matchMedia("(max-width: 760px)").matches ? !value : true)}>PRODUCTS <ChevronDown size={11} aria-hidden="true"/></Button>
             {productsOpen && <div className="products-menu">
               <a href="https://osprey.purplelotus.space" target="_blank" rel="noreferrer" className="product-menu-link"><strong>Osprey <ArrowUpRight size={13}/></strong><small>osprey.purplelotus.space</small></a>
               <div className="product-menu-upcoming"><span><strong>Petal</strong><small>In the works</small></span><em>COMING SOON</em></div>
