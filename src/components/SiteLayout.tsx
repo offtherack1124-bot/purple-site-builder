@@ -28,7 +28,7 @@ export function SiteLayout({ children }: { children: React.ReactNode }) {
       </div>
     </header>
     <main>{children}</main>
-    <div className="wordmark-banner" aria-hidden="true"><span className="wordmark-text">PurpleLotus</span><span className="wordmark-corner"/></div>
+    <div className="wordmark-banner" aria-hidden="true"><span className="wordmark-text">PurpleLotus</span></div>
     <footer className="site-footer"><div className="footer-top"><div><Link to="/" className="brand footer-brand"><span>PURPLELOTUS</span></Link><p>Security that ships with your code.</p></div><div className="footer-links"><Link to="/" hash="product">Product</Link><Link to="/threat-feed">Threat feed</Link><Link to="/blogs">Research</Link><Link to="/" hash="pricing">Pricing</Link><a href="mailto:security@purplelotus.tech">Contact</a></div></div><div className="footer-bottom"><span>© {new Date().getFullYear()} PURPLELOTUS</span><span>BUILT FOR WHAT COMES NEXT.</span><a href="mailto:security@purplelotus.tech">SECURITY@PURPLELOTUS.TECH ↗</a></div></footer>
   </div>;
 }
