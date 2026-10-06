@@ -36,7 +36,7 @@ button { cursor: pointer; }
 .main-nav a { font-size: 11px; transition: opacity .2s; white-space: nowrap; }.main-nav a:hover, .footer-links a:hover { opacity: .55; }
 .products-nav { position:relative; display:flex; align-items:center; height:73px; }
 .products-trigger.site-button { min-height:36px; padding:0; border:0; background:transparent; color:var(--ink); font-size:11px; gap:5px; }
-.products-trigger.site-button:hover { transform:none; color:var(--purple); }
+.products-trigger.site-button:hover,.products-trigger.site-button:focus-visible { transform:none; background:transparent; border-color:transparent; color:var(--ink); opacity:.55; }
 .products-trigger[aria-expanded="true"] svg { transform:rotate(180deg); }
 .products-menu { position:absolute; top:calc(100% - 1px); left:-18px; width:286px; background:var(--card); border:1px solid var(--ink); box-shadow:4px 4px 0 var(--ink); z-index:30; }
 .product-menu-link,.product-menu-upcoming { padding:17px 19px; display:flex; flex-direction:column; gap:6px; font:12px var(--font-mono); }
@@ -127,6 +127,5 @@ button { cursor: pointer; }
 .wordmark-banner { position:relative; background:var(--paper); border-bottom:1px solid var(--border); display:flex; justify-content:center; padding:clamp(55px,9vw,140px) 20px clamp(35px,6vw,100px); overflow:hidden; }
 .wordmark-text { position:relative; font:700 clamp(50px,14vw,250px)/0.95 var(--font-display); white-space:nowrap; color:var(--ink); }
 .wordmark-text::after { content:""; display:block; width:22%; height:4px; margin:18px auto 0; background:var(--purple); }
-.wordmark-corner { position:absolute; right:4%; bottom:12%; width:29px; height:29px; border:2px solid var(--ink); border-top-color:var(--purple); border-right-color:var(--purple); }
-@media(max-width:760px) { .install-grid { grid-template-columns:1fr; gap:36px; } .install-command { box-shadow:9px 9px 0 var(--purple); padding:20px; } .wordmark-text { font-size:14vw; } .wordmark-text::after { height:2px; margin-top:10px; } .wordmark-corner { width:14px;height:14px;bottom:9%; } }
+@media(max-width:760px) { .install-grid { grid-template-columns:1fr; gap:36px; } .install-command { box-shadow:9px 9px 0 var(--purple); padding:20px; } .wordmark-text { font-size:14vw; } .wordmark-text::after { height:2px; margin-top:10px; } }
 @media(prefers-reduced-motion:reduce) { .ticker-track { animation:none; } }
