@@ -3,7 +3,6 @@ import { useState } from "react";
 import { ArrowRight, ArrowUpRight, Copy, Check } from "lucide-react";
 import { Button, ButtonLink } from "../components/Button";
 import { SiteLayout } from "../components/SiteLayout";
-import goatAsset from "../assets/purple-pixel-goat.png.asset.json";
 import advisories from "../data/advisories.json";
 
 const articles = [
@@ -34,7 +33,7 @@ function Home() {
   };
   return <SiteLayout>
     <section className="hero">
-       <img className="hero-goat" src={goatAsset.url} width="623" height="555" alt="Purple pixel-art goat" />
+       <img className="hero-goat" src="/purple-pixel-goat.png" width="776" height="634" alt="Purple pixel-art goat" />
       <div className="hero-content"><p className="eyebrow">[ PURPLELOTUS / SUPPLY CHAIN SECURITY ]</p><h1>Security for what<br/>you depend on.</h1><p className="hero-desc">Find the risks hiding in your dependencies, pipelines, and products. PurpleLotus brings open-source intelligence and human expertise into focus.</p><div className="hero-cta"><ButtonLink href="https://github.com/Purplelotusec/Osprey" target="_blank" rel="noreferrer">EXPLORE OSPREY <ArrowUpRight size={15}/></ButtonLink><ButtonLink href="mailto:security@purplelotus.tech" variant="outline">TALK TO OUR TEAM <ArrowUpRight size={15}/></ButtonLink></div></div>
       <div className="hero-corner left">SYSTEM: PURPLELOTUS<br/>FOCUS: SUPPLY CHAIN</div><div className="hero-corner right">INTELLIGENCE: ACTIVE<br/><span className="live-dot"/>STATUS: MONITORING</div>
     </section>
